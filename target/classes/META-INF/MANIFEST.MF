@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-homework-1
+Implementation-Version: 0.0.1
+Built-By: d8650
+Implementation-Vendor-Id: dwyu.training
+Build-Jdk: 1.8.0_144
+Implementation-URL: https://spring.io/projects/spring-boot/spring-home
+ work-1
+Created-By: Maven Integration for Eclipse
+
