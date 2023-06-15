@@ -1,10 +1,18 @@
 package dwyu.training.jpa.entity;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,5 +34,8 @@ public class MemberInfo {
 	
 	@Column(name = "CUSTOMER_NAME")
 	private String customerName;
+	
+	@Column(name = "POINTS")
+	private long points;
 	
 }

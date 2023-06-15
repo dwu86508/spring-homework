@@ -15,6 +15,7 @@ import lombok.experimental.SuperBuilder;
 
 
 @Data
+
 public class GoodsVo {
 	
 	private long goodsID;

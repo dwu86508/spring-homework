@@ -15,5 +15,7 @@ public class OrderCustomer {
 	
 	private String orderAddr;
 	
+	private long points;
+	
 
 }

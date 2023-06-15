@@ -2,9 +2,12 @@ package dwyu.training.jpa.vo;
 
 import java.util.List;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+
 public class GoodsOrderVo {
+
 
 	private long goodsID;
 	

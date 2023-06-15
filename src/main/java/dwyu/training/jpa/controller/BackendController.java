@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +19,12 @@ import dwyu.training.jpa.entity.GoodsDataCondition;
 import dwyu.training.jpa.entity.GoodsDataInfo;
 import dwyu.training.jpa.entity.GoodsReportSalesInfo;
 import dwyu.training.jpa.entity.GoodsSalesReportCondition;
+import dwyu.training.jpa.entity.SalesReportInf;
 import dwyu.training.jpa.service.BackendService;
 import dwyu.training.jpa.vo.GoodsVo;
 
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/ecommerce/BackendController")
 public class BackendController {
@@ -40,7 +42,8 @@ public class BackendController {
 
 		GoodsDataCondition condition = GoodsDataCondition.builder().goodsID(goodsID).goodsName(goodsName)
 				.startPrice(startPrice).endPrice(endPrice).priceSort(priceSort).quantity(quantity).status(status).build();
-		
+		System.out.println("-------------" +status);
+		System.out.println("-------------" +priceSort);
 		GenericPageable genericPageable = GenericPageable.builder().currentPageNo(currentPageNo)
 				.pageDataSize(pageDataSize).pagesIconSize(pagesIconSize).build();
 				
@@ -67,6 +70,28 @@ public class BackendController {
 				.pageDataSize(pageDataSize).pagesIconSize(pagesIconSize).build();
 		
 		GoodsReportSalesInfo goodsReportSalesInfo = backendService.queryGoodsSales(condition, genericPageable);
+		
+		return ResponseEntity.ok(goodsReportSalesInfo); 
+	}
+	
+	@ApiOperation(value = "購物網-後臺-商品訂單查詢(一個商品對應到多筆訂單)")
+	@GetMapping(value = "/queryGoodsSalesNew")
+	public ResponseEntity<SalesReportInf> queryGoodsSalesNew(
+			 @RequestParam String startDate, @RequestParam String endDate,  
+			 @RequestParam int currentPageNo, @RequestParam int pageDataSize, @RequestParam int pagesIconSize) {
+		/*
+		 startDate:2022/09/19
+		 endDate:2022/09/19
+		 currentPageNo:1
+		 pageDataSize: 3
+		 pagesIconSize: 3
+		 */	
+		GoodsSalesReportCondition condition = GoodsSalesReportCondition.builder().startDate(startDate).endDate(endDate).build();
+		
+		GenericPageable genericPageable = GenericPageable.builder().currentPageNo(currentPageNo)
+				.pageDataSize(pageDataSize).pagesIconSize(pagesIconSize).build();
+		
+		SalesReportInf goodsReportSalesInfo = backendService.queryGoodsSalesNew(condition, genericPageable);
 		
 		return ResponseEntity.ok(goodsReportSalesInfo); 
 	}

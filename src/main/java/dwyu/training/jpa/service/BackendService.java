@@ -23,6 +23,7 @@ import dwyu.training.jpa.entity.GoodsDataCondition;
 import dwyu.training.jpa.entity.GoodsDataInfo;
 import dwyu.training.jpa.entity.GoodsReportSalesInfo;
 import dwyu.training.jpa.entity.GoodsSalesReportCondition;
+import dwyu.training.jpa.entity.SalesReportInf;
 import dwyu.training.jpa.vo.GoodsVo;
 
 
@@ -132,9 +133,23 @@ public class BackendService {
 	}
 	
 	public GoodsReportSalesInfo queryGoodsSales(GoodsSalesReportCondition condition,GenericPageable genericPageable){
+		//避免頁碼為0出錯
 		int pageNo = genericPageable.getCurrentPageNo() == 0 ? 1 : genericPageable.getCurrentPageNo();
 		genericPageable.setCurrentPageNo(pageNo);
+		//取得資料庫符合訂單資料
 		GoodsReportSalesInfo goodsReportSalesInfo = orderInfoDao.queryOrderList(condition,genericPageable);
+		//頁碼計算
+		GenericPageable newGenericPageable = calculatePage(goodsReportSalesInfo.getGenericPageable());
+		goodsReportSalesInfo.setGenericPageable(newGenericPageable);
+		return goodsReportSalesInfo;
+	}
+	
+	public SalesReportInf queryGoodsSalesNew(GoodsSalesReportCondition condition,GenericPageable genericPageable){
+		//避免頁碼為0出錯
+		int pageNo = genericPageable.getCurrentPageNo() == 0 ? 1 : genericPageable.getCurrentPageNo();
+		genericPageable.setCurrentPageNo(pageNo);
+		//取得資料庫符合訂單資料
+		SalesReportInf goodsReportSalesInfo = orderInfoDao.queryOrderListNew(condition,genericPageable);
 		//頁碼計算
 		GenericPageable newGenericPageable = calculatePage(goodsReportSalesInfo.getGenericPageable());
 		goodsReportSalesInfo.setGenericPageable(newGenericPageable);

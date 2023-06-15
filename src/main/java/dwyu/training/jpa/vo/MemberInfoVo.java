@@ -19,6 +19,8 @@ public class MemberInfoVo {
 	
 	private String memberPWD;
 	
-	private String memberName;	
+	private String memberName;
+	
+	private long memberPoint;
 	
 }

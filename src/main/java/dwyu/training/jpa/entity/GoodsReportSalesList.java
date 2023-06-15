@@ -17,7 +17,8 @@ import lombok.experimental.SuperBuilder;
 	    entities={
 	        @EntityResult(
 		        entityClass = dwyu.training.jpa.entity.GoodsReportSalesList.class,
-		        fields = {		        	
+		        fields = {
+		        	@FieldResult(name="goodsID", column="GOODS_ID"),
 		        	@FieldResult(name="goodsName", column="GOODS_NAME"),
 		            @FieldResult(name="goodsBuyPrice",  column="GOODS_BUY_PRICE"),
 		        	@FieldResult(name="orderID",  column="ORDER_ID"),
@@ -37,6 +38,9 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @Table(name = "BEVERAGE_ORDER")
 public class GoodsReportSalesList {	
+	
+	@Column(name = "GOODS_ID")
+	private String goodsID;
 	
 	@Column(name = "GOODS_Name")
 	private String goodsName;
