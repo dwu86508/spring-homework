@@ -41,9 +41,7 @@ public class BackendController {
 			 @RequestParam int currentPageNo, @RequestParam int pageDataSize, @RequestParam int pagesIconSize) {
 
 		GoodsDataCondition condition = GoodsDataCondition.builder().goodsID(goodsID).goodsName(goodsName)
-				.startPrice(startPrice).endPrice(endPrice).priceSort(priceSort).quantity(quantity).status(status).build();
-		System.out.println("-------------" +status);
-		System.out.println("-------------" +priceSort);
+				.startPrice(startPrice).endPrice(endPrice).priceSort(priceSort).quantity(quantity).status(status).build();		
 		GenericPageable genericPageable = GenericPageable.builder().currentPageNo(currentPageNo)
 				.pageDataSize(pageDataSize).pagesIconSize(pagesIconSize).build();
 				

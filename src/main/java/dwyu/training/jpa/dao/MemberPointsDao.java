@@ -10,6 +10,6 @@ import dwyu.training.jpa.entity.MemberPointsLog;
 @Repository
 public interface MemberPointsDao extends JpaRepository<MemberPointsLog, String>{
 	
-	List<MemberPointsLog> findByCustomerID (String customerID);
+	List<MemberPointsLog> findByCustomerIdOrderByPlNumAsc (String customerID);
 
 }

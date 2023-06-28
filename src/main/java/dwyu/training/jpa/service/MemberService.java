@@ -27,7 +27,7 @@ public class MemberService {
 	}
 	
 	public List<MemberPointsLog> queryMemberPoints(String memberID){
-		List<MemberPointsLog> memeberPointsLog = memberPointsDao.findByCustomerID(memberID);		
+		List<MemberPointsLog> memeberPointsLog = memberPointsDao.findByCustomerIdOrderByPlNumAsc(memberID);		
 		return memeberPointsLog;
 	}
 	

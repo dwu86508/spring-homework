@@ -25,7 +25,7 @@ public class MemberPointsLog {
 	private long plNum;
 	
 	@Column(name = "CUSTOMER_ID")
-	private String customerID;
+	private String customerId;
 	
 	@Column(name = "ORDER_INF_NUM")
 	private long infNum;	
